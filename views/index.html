@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>serveNow</title>
+
+    <!-- STYLESHEETS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- VENDOR SCRIPTS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <!-- handlebars -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.3/handlebars.min.js"></script>
+
+    <!-- APPLICATION SCRIPTS -->
+    <script src="js/app.js"></script>
+  </head>
+  <body>
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Welcome to serveNow!</h1>
+        <p>Your service project directory!</p>
+      </div>
+    </div>
+
+    <section class="container">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <h2>Projects</h2>
+        </div>
+      </div>
+      <!-- projects! -->
+      <div id='projects'>
+
+
+
+
+
+
+
+
+      </div>
+    </section>
+
+    <!-- begin songModal: this is not visible until you call .modal() on it -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="songModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Create Song</h4>
+          </div>
+          <div class="modal-body">
+            <fieldset class='form-horizontal'>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="songName">Song Name</label>
+              <div class="col-md-4">
+              <input id="songName" name="songName" type="text" placeholder="" class="form-control input-md" required="">
+
+              </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="trackNumber">Track Number</label>
+              <div class="col-md-4">
+              <input id="trackNumber" name="trackNumber" type="text" placeholder="" class="form-control input-md">
+
+              </div>
+            </div>
+
+            </fieldset>
+
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="saveSong">Save changes</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!-- handlebars template -->
+    <script id="projectTemplate" type="text/x-handlebars-template">
+
+        <!-- one project -->
+        <div class="row project" id="{{ project._id }}">
+
+          <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default">
+              <div class="panel-body">
+
+
+              <!-- begin project internal row -->
+                <div class='row'>
+                  <div class="col-md-3 col-xs-12 thumbnail project-art">
+                    <img src="http://placehold.it/800x800" alt="project image">
+                  </div>
+
+                  <div class="col-md-9 col-xs-12">
+                    <ul class="list-group">
+                      <li class="list-group-item">
+                        <h4 class='inline-header'>What:</h4>
+                        <span class='project-what'>{{ project.what }}</span>
+                      </li>
+
+                      <li class="list-group-item">
+                        <h4 class='inline-header'>When:</h4>
+                        <span class='project-when'>{{ project.when }}</span>
+                      </li>
+
+                      <li class="list-group-item">
+                        <h4 class='inline-header'>Why:</h4>
+                        <span class='project-why'>{{ project.why }}</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                </div>
+                <!-- end of project internal row -->
+
+                <div class='panel-footer'>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end one project -->
+
+    </script>
+  </body>
+
+
+
+</html>

@@ -1,0 +1,41 @@
+Project 1 Idea
+
+Community service event app - Users can post/edit events
+
+Users can sign up and log in.
+
+Users can post their events to the app.
+
+Info to add: Event name, date, motivation
+
+
+
+Sprint: Set up development environment - done
+
+Sprint: Serve and render hard-coded data on the page, then connect to a database to show events index - done
+
+- User can see an image with title of website and background image
+- User can see a list of events with their respective info
+
+
+
+Sprint: Add a form and support creating data
+
+- User can see a form for searching for adding events
+- User can type data in form
+- User can click on button to add form info to database
+- User can see an updated list of events
+
+Sprint: Delete event
+
+- User can see a delete button for each event
+- User can click on button to delete event
+- User can see updated page data
+
+Sprint: Edit and update customized event info
+
+- User can see an edit button for each event
+- User can click on button to enable making changes to certain event input fields
+- User can type changes to event info
+- User can click on button to update event info
+- User can see updated page data
