@@ -22,7 +22,7 @@
   <body>
     <div class="jumbotron">
       <div class="container">
-        <h1>Welcome to serveNow!</h1>
+        <h1>Welcome to serveNow</h1>
         <p>Your service project directory!</p>
       </div>
     </div>
@@ -35,13 +35,55 @@
       </div>
       <!-- projects! -->
       <div id='projects'>
+    <!-- handlebars template -->
+        <script id="projectTemplate" type="text/x-handlebars-template">
+
+            <!-- one project -->
+            <div class="row project" id="{{ project._id }}">
+
+              <div class="col-md-10 col-md-offset-1">
+                <div class="panel panel-default">
+                  <div class="panel-body">
 
 
+                  <!-- begin project internal row -->
+                    <div class='row'>
+                      <div class="col-md-3 col-xs-12 thumbnail project-art">
+                        <img src="{{ project.image }}" alt="project image">
+                      </div>
 
+                      <div class="col-md-9 col-xs-12">
+                        <ul class="list-group">
+                          <li class="list-group-item">
+                            <h4 class='inline-header'>What:</h4>
+                            <span class='project-what'>{{ project.what }}</span>
+                          </li>
 
+                          <li class="list-group-item">
+                            <h4 class='inline-header'>When:</h4>
+                            <span class='project-when'>{{ project.when }}</span>
+                          </li>
 
+                          <li class="list-group-item">
+                            <h4 class='inline-header'>Why:</h4>
+                            <span class='project-why'>{{ project.why }}</span>
+                          </li>
+                        </ul>
+                      </div>
 
+                    </div>
+                    <!-- end of project internal row -->
 
+                    <div class='panel-footer'>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end one project -->
+
+        </script>
 
       </div>
     </section>
@@ -87,55 +129,7 @@
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
-    <!-- handlebars template -->
-    <script id="projectTemplate" type="text/x-handlebars-template">
 
-        <!-- one project -->
-        <div class="row project" id="{{ project._id }}">
-
-          <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-              <div class="panel-body">
-
-
-              <!-- begin project internal row -->
-                <div class='row'>
-                  <div class="col-md-3 col-xs-12 thumbnail project-art">
-                    <img src="http://placehold.it/800x800" alt="project image">
-                  </div>
-
-                  <div class="col-md-9 col-xs-12">
-                    <ul class="list-group">
-                      <li class="list-group-item">
-                        <h4 class='inline-header'>What:</h4>
-                        <span class='project-what'>{{ project.what }}</span>
-                      </li>
-
-                      <li class="list-group-item">
-                        <h4 class='inline-header'>When:</h4>
-                        <span class='project-when'>{{ project.when }}</span>
-                      </li>
-
-                      <li class="list-group-item">
-                        <h4 class='inline-header'>Why:</h4>
-                        <span class='project-why'>{{ project.why }}</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                </div>
-                <!-- end of project internal row -->
-
-                <div class='panel-footer'>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- end one project -->
-
-    </script>
   </body>
 
 

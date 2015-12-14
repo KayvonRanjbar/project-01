@@ -4,7 +4,8 @@ var Schema = mongoose.Schema;
 var ProjectSchema = new Schema({
   what: String,
   when: String,
-  why: String
+  why: String,
+  image: String
 });
 
 var Project = mongoose.model('Project', ProjectSchema);

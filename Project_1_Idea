@@ -21,7 +21,7 @@ Sprint: Serve and render hard-coded data on the page, then connect to a database
 
 Sprint: Add a form and support creating data
 
-- User can see a form for searching for adding events
+- User can see a form for adding events
 - User can type data in form
 - User can click on button to add form info to database
 - User can see an updated list of events
