@@ -9,9 +9,9 @@ var projectsList =[
 ];
 
 projectsList.push({
-             what: 'Help Kayvon move!',
+             what: 'Help me landscape',
              when: 'December 18, 2015',
-             why: 'Because he has a lot of stuff!',
+             why: 'Please...!',
              image: 'http://www.psp.wa.gov/downloads/PSSH_Toolkit/elements/Tree.jpg'
            });
 projectsList.push({
@@ -21,13 +21,13 @@ projectsList.push({
              image: 'https://tse1.mm.bing.net/th?&id=OIP.M0874035ddc17b61c6b2922853846bce6o0&w=300&h=300&c=0&pid=1.9&rs=0&p=0&r=0'
            });
 projectsList.push({
-             what: 'asdf',
+             what: 'Operation Lift Grandma',
              when: 'sdfsdf',
              why: 'sadfsadf',
              image: 'http://images.clipartlogo.com/files/ss/thumb/178/17829961/vector-elderly-couple_small.jpg'
            });
 projectsList.push({
-             what: 'gfhfgh',
+             what: 'Cuddle the giraffes',
              when: 'fgj',
              why: 'asdf',
              image: 'http://icons.iconarchive.com/icons/icons8/windows-8/512/Animals-Dog-icon.png'
