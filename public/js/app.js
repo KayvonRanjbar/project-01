@@ -33,6 +33,8 @@ $(document).ready(function() {
 
   $('#projects').on('click', '.put-project', handleSaveChangesClick);
 
+  $('#projects').on('click', '.edit-organizers', handleEditOrganizersClick);
+
   $('#editOrganizersModal').on('click', '.delete-organizer', handleDeleteOrganizerClick);
 
   $('#editOrganizersModal').on('submit', 'form', handleUpdateOrganizer);
@@ -60,6 +62,7 @@ function handleUpdateOrganizer(e) {
 
 function handleEditOrganizersClick(e) {
   e.preventDefault();
+  console.log('where am I?');
   var projectId = $(this).parents('.project').data('project-id');
   // let's get the organizers for this project
   $.get('/api/projects/' + projectId + '/organizers').success(function(organizers) {
@@ -117,11 +120,12 @@ function handleDeleteOrganizerClick(e) {
 function updateOrganizersList(projectId) {
   $.get('/api/projects/' + projectId + '/organizers').success(function(someProjects) {
     console.log('replacement projects', someProjects);
-    // build a new li
-    var replacementLi = buildSongsHtml(someAlbums);
-    // now replace the <li> with the organizers on it.
-    var $originalLi = $('[data-project-id=' + projectId + '] .organizers-list');
-    $originalLi.replaceWith(replacementLi);
+    // // build a new li
+    // var replacementLi = buildOrganizersHtml(someProjects);
+    // // now replace the <li> with the organizers on it.
+    // var $originalLi = $('[data-project-id=' + projectId + '] .organizers-list');
+    // $originalLi.replaceWith(replacementLi);
+    
   });
 }
 

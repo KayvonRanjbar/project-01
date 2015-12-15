@@ -61,6 +61,13 @@ app.post('/api/projects', function projectCreate(req, res) {
 
 });
 
+app.get('/api/projects/:id/organizers', function projectShow(req, res) {
+  console.log('requested project id=', req.params.id);
+  db.Project.findOne({_id: req.params.id}, function(err, project) {
+    res.json(project.organizers);
+  });
+});
+
 app.post('/api/projects/:projectId/organizers', function organizersCreate(req, res) {
   console.log('body', req.body);
   db.Project.findOne({_id: req.params.projectId}, function(err, project) {
@@ -92,7 +99,6 @@ app.delete('/api/projects/:id', function deleteProject(req, res) {
   });
 });
 
-
 app.put('/api/projects/:id', function updateProject(req, res) {
   console.log('updating id ', req.params.id);
   console.log('received body ', req.body);
@@ -112,35 +118,33 @@ app.put('/api/projects/:id', function updateProject(req, res) {
 app.put('/api/projects/:projectId/organizers/:id', function(req, res) {
   var projectId = req.params.projectId;
   var organizerId = req.params.id;
-  db.Album.findOne({_id: albumId}, function (err, foundAlbum) {
-    // find song embedded in album
-    var foundSong = foundAlbum.songs.id(songId);
-    foundSong.name = req.body.name;
-    foundSong.trackNumber = req.body.trackNumber;
+  db.Project.findOne({_id: projectId}, function (err, foundProject) {
+    // find organizer embedded in project
+    var foundOrganizer = foundProject.organizers.id(organizerId);
+    foundOrganizer.firstName = req.body.firstName;
+    foundOrganizer.lastName = req.body.lastName;
+    foundOrganizer.email = req.body.email;
 
     // save changes
-    foundAlbum.save(function(err, saved) {
+    foundProject.save(function(err, saved) {
       if(err) { console.log('error', err); }
       res.json(saved);
     });
   });
 });
 
-
-
-app.delete('/api/albums/:albumId/songs/:id', function(req, res) {
-  var albumId = req.params.albumId;
-  var songId = req.params.id;
+app.delete('/api/projects/:projectId/organizers/:id', function(req, res) {
+  var projectId = req.params.projectId;
+  var organizerId = req.params.id;
   console.log(req.params);
-  db.Album.findOne({_id: albumId}, function (err, foundAlbum) {
+  db.Project.findOne({_id: projectId}, function (err, foundProject) {
     if (err) {console.log(error, err);}
-    // find song embedded in album
-    var foundSong = foundAlbum.songs.id(songId);
-
+    // find organizer embedded in project
+    var foundOrganizer = foundProject.organizers.id(organizerId);
     // delete
-    foundSong.remove();
+    foundOrganizer.remove();
     // save changes
-    foundAlbum.save(function(err, saved) {
+    foundProject.save(function(err, saved) {
       if(err) { console.log('error', err); }
       res.json(saved);
     });
