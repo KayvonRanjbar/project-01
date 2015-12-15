@@ -6,7 +6,7 @@ var Organizer = require('./organizer');
 var ProjectSchema = new Schema({
   what: String,
   when: String,
-  why: String,
+  where: String,
   image: String,
   organizers: [Organizer.schema]
 });
