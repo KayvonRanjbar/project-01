@@ -61,6 +61,27 @@ app.post('/api/projects', function projectCreate(req, res) {
 
 });
 
+app.post('/api/projects/:projectId/wheres', function wheresCreate(req, res) {
+  console.log('body', req.body);
+  db.Project.findOne({_id: req.params.projectId}, function(err, project) {
+    if (err) { console.log('error', err); }
+
+    var where = new db.Where(req.body);
+    project.wheres.push(where);
+    project.save(function(err, savedProject) {
+      if (err) { console.log('error', err); }
+      console.log('project with new where saved:', savedProject);
+      res.json(where);
+    });
+  });
+});
+
+app.get('/api/projects/:id', function projectShow(req, res) {
+  console.log('requested project id=', req.params.id);
+  db.Project.findOne({_id: req.params.id}, function(err, project) {
+    res.json(project);
+  });
+});
 
 /**********
  * SERVER *

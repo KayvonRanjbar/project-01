@@ -17,9 +17,48 @@ $(document).ready(function() {
     });
     $(this).trigger("reset");
   });
+
+  $('#projects').on('click', '.add-where', function(e) {
+    var id = $(this).parents('.project').data('project-id');
+    console.log('id',id);
+    $('#whereModal').data('project-id', id);
+    $('#whereModal').modal();
+  });
+
+  $('#saveWhere').on('click', handleNewWhereSubmit);
 });
 
+function handleNewWhereSubmit(e) {
+  var projectId = $('#whereModal').data('project-id');
+  var whereName = $('#name').val();
+  var address = $('#address').val();
 
+  var formData = {
+    name: whereName,
+    address: address
+  };
+
+  var postUrl = '/api/projects/' + projectId + '/wheres';
+  console.log('posting to ', postUrl, ' with data ', formData);
+
+  $.post(postUrl, formData)
+    .success(function(where) {
+      console.log('where', where);
+
+      // re-get full project and render on page
+      $.get('/api/projects/' + projectId).success(function(project) {
+        //remove old entry
+        $('[data-project-id='+ projectId + ']').remove();
+        // render a replacement
+        renderProject(project);
+      });
+
+      //clear form
+      $('#name').val('');
+      $('#address').val('');
+      $('#whereModal').modal('hide');
+    });
+}
 
 
 

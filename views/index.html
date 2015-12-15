@@ -107,7 +107,7 @@
         <script id="projectTemplate" type="text/x-handlebars-template">
 
             <!-- one project -->
-            <div class="row project" id="{{ project._id }}">
+            <div class="row project" data-project-id="{{ project._id }}">
 
               <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
@@ -140,7 +140,7 @@
                           <li class="list-group-item">
                             <h4 class='inline-header'>Where:</h4>
                             {{#each project.wheres}}
-                              <span class='project-where'>{{ name }} &ndash; {{ address }}    </span>
+                              <span class='project-where'>{{ name }} &ndash; {{ address }}</span>
                             {{/each}}
                           </li>
                           
@@ -151,6 +151,7 @@
                     <!-- end of project internal row -->
 
                     <div class='panel-footer'>
+                      <button class='btn btn-primary add-where'>Add Where</button>
                     </div>
 
                   </div>
@@ -164,31 +165,31 @@
       </div>
     </section>
 
-    <!-- begin songModal: this is not visible until you call .modal() on it -->
-    <div class="modal fade" tabindex="-1" role="dialog" id="songModal">
+    <!-- begin whereModal: this is not visible until you call .modal() on it -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="whereModal">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Create Song</h4>
+            <h4 class="modal-title">Create Where</h4>
           </div>
           <div class="modal-body">
             <fieldset class='form-horizontal'>
 
             <!-- Text input-->
             <div class="form-group">
-              <label class="col-md-4 control-label" for="songName">Song Name</label>
+              <label class="col-md-4 control-label" for="name">Name</label>
               <div class="col-md-4">
-              <input id="songName" name="songName" type="text" placeholder="" class="form-control input-md" required="">
+              <input id="name" name="name" type="text" placeholder="e.g. Bob's place" class="form-control input-md" required="">
 
               </div>
             </div>
 
             <!-- Text input-->
             <div class="form-group">
-              <label class="col-md-4 control-label" for="trackNumber">Track Number</label>
+              <label class="col-md-4 control-label" for="address">Address</label>
               <div class="col-md-4">
-              <input id="trackNumber" name="trackNumber" type="text" placeholder="" class="form-control input-md">
+              <input id="address" name="address" type="text" placeholder="e.g. 12345 Food Ct, Los Angeles, CA 94603" class="form-control input-md">
 
               </div>
             </div>
@@ -199,7 +200,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" id="saveSong">Save changes</button>
+            <button type="button" class="btn btn-primary" id="saveWhere">Save changes</button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
