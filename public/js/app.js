@@ -214,6 +214,7 @@ function handleNewOrganizerSubmit(e) {
       //clear form
       $('#firstName').val('');
       $('#lastName').val('');
+      $('#email').val('');
       $('#organizerModal').modal('hide');
     });
 }
