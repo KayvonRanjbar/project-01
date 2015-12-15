@@ -38,9 +38,6 @@ var sampleWheres = [];
 sampleWheres.push({ name: 'Bob\'s castle',
                    address: '13453 Cubicle Ln'
 });
-// sampleWheres.push({ name: "The Chimney Centre",
-//                    address: '24353 Unreal Blvd'
-// });
 
 projectsList.forEach(function(project) {
   project.wheres = sampleWheres;
