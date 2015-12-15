@@ -33,6 +33,19 @@ projectsList.push({
              image: 'http://icons.iconarchive.com/icons/icons8/windows-8/512/Animals-Dog-icon.png'
            });
 
+var sampleWheres = [];
+
+sampleWheres.push({ name: 'Bob\'s castle',
+                   address: '13453 Cubicle Ln'
+});
+// sampleWheres.push({ name: "The Chimney Centre",
+//                    address: '24353 Unreal Blvd'
+// });
+
+projectsList.forEach(function(project) {
+  project.wheres = sampleWheres;
+});
+
 db.Project.remove({}, function(err, projects){
 
   db.Project.create(projectsList, function(err, projects){

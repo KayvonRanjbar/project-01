@@ -136,6 +136,14 @@
                             <h4 class='inline-header'>Why:</h4>
                             <span class='project-why'>{{ project.why }}</span>
                           </li>
+
+                          {{#each project.wheres}}
+                            <li class="list-group-item">
+                              <h4 class='inline-header'>Where:</h4>
+                              <span class='project-why'>{{ name }} &ndash; {{ address }}</span>
+                            </li>
+                          {{/each}}
+
                         </ul>
                       </div>
 

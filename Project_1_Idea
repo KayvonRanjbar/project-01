@@ -26,6 +26,10 @@ Sprint: Add a form and support creating data - done
 - User can click on button to add form info to database
 - User can see an updated list of events
 
+Sprint: Add mongo embedded where data
+
+- User can see 'where' for each project
+
 
 Sprint: Delete event
 
