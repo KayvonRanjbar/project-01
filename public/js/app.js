@@ -199,10 +199,12 @@ function handleNewOrganizerSubmit(e) {
   var projectId = $('#organizerModal').data('project-id');
   var firstName = $('#firstName').val();
   var lastName = $('#lastName').val();
+  var email = $('#email').val();
 
   var formData = {
     firstName: firstName,
-    lastName: lastName
+    lastName: lastName,
+    email: email
   };
 
   var postUrl = '/api/projects/' + projectId + '/organizers';
