@@ -1,14 +1,14 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-var Where = require('./where');
+var Organizer = require('./organizer');
 
 var ProjectSchema = new Schema({
   what: String,
   when: String,
   why: String,
   image: String,
-  wheres: [Where.schema]
+  organizers: [Organizer.schema]
 });
 
 var Project = mongoose.model('Project', ProjectSchema);

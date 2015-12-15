@@ -138,9 +138,9 @@
                           </li>
 
                           <li class="list-group-item">
-                            <h4 class='inline-header'>Where:</h4>
-                            {{#each project.wheres}}
-                              <span class='project-where'>{{ name }} &ndash; {{ address }}</span>
+                            <h4 class='inline-header'>Organizer(s):</h4>
+                            {{#each project.organizers}}
+                              <span class='project-organizer'>{{ firstName }} {{ lastName }} &ndash; </span>
                             {{/each}}
                           </li>
                           
@@ -151,7 +151,7 @@
                     <!-- end of project internal row -->
 
                     <div class='panel-footer'>
-                      <button class='btn btn-primary add-where'>Add Where</button>
+                      <button class='btn btn-primary add-organizer'>Add Organizer</button>
                     </div>
 
                   </div>
@@ -165,31 +165,31 @@
       </div>
     </section>
 
-    <!-- begin whereModal: this is not visible until you call .modal() on it -->
-    <div class="modal fade" tabindex="-1" role="dialog" id="whereModal">
+    <!-- begin organizerModal: this is not visible until you call .modal() on it -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="organizerModal">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Create Where</h4>
+            <h4 class="modal-title">Create Organizer</h4>
           </div>
           <div class="modal-body">
             <fieldset class='form-horizontal'>
 
             <!-- Text input-->
             <div class="form-group">
-              <label class="col-md-4 control-label" for="name">Name</label>
+              <label class="col-md-4 control-label" for="firstName">First Name</label>
               <div class="col-md-4">
-              <input id="name" name="name" type="text" placeholder="e.g. Bob's place" class="form-control input-md" required="">
+              <input id="firstName" name="firstName" type="text" placeholder="e.g. Bob" class="form-control input-md" required="">
 
               </div>
             </div>
 
             <!-- Text input-->
             <div class="form-group">
-              <label class="col-md-4 control-label" for="address">Address</label>
+              <label class="col-md-4 control-label" for="lastName">Last Name</label>
               <div class="col-md-4">
-              <input id="address" name="address" type="text" placeholder="e.g. 12345 Food Ct, Los Angeles, CA 94603" class="form-control input-md">
+              <input id="lastName" name="lastName" type="text" placeholder="e.g. Peters" class="form-control input-md">
 
               </div>
             </div>
@@ -200,7 +200,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" id="saveWhere">Save changes</button>
+            <button type="button" class="btn btn-primary" id="saveOrganizer">Save changes</button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->

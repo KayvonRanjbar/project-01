@@ -18,32 +18,32 @@ $(document).ready(function() {
     $(this).trigger("reset");
   });
 
-  $('#projects').on('click', '.add-where', function(e) {
+  $('#projects').on('click', '.add-organizer', function(e) {
     var id = $(this).parents('.project').data('project-id');
     console.log('id',id);
-    $('#whereModal').data('project-id', id);
-    $('#whereModal').modal();
+    $('#organizerModal').data('project-id', id);
+    $('#organizerModal').modal();
   });
 
-  $('#saveWhere').on('click', handleNewWhereSubmit);
+  $('#saveOrganizer').on('click', handleNewOrganizerSubmit);
 });
 
-function handleNewWhereSubmit(e) {
-  var projectId = $('#whereModal').data('project-id');
-  var whereName = $('#name').val();
-  var address = $('#address').val();
+function handleNewOrganizerSubmit(e) {
+  var projectId = $('#organizerModal').data('project-id');
+  var firstName = $('#firstName').val();
+  var lastName = $('#lastName').val();
 
   var formData = {
-    name: whereName,
-    address: address
+    firstName: firstName,
+    lastName: lastName
   };
 
-  var postUrl = '/api/projects/' + projectId + '/wheres';
+  var postUrl = '/api/projects/' + projectId + '/organizers';
   console.log('posting to ', postUrl, ' with data ', formData);
 
   $.post(postUrl, formData)
-    .success(function(where) {
-      console.log('where', where);
+    .success(function(organizer) {
+      console.log('organizer', organizer);
 
       // re-get full project and render on page
       $.get('/api/projects/' + projectId).success(function(project) {
@@ -54,9 +54,9 @@ function handleNewWhereSubmit(e) {
       });
 
       //clear form
-      $('#name').val('');
-      $('#address').val('');
-      $('#whereModal').modal('hide');
+      $('#firstName').val('');
+      $('#lastName').val('');
+      $('#organizerModal').modal('hide');
     });
 }
 

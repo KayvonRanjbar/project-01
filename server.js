@@ -61,17 +61,17 @@ app.post('/api/projects', function projectCreate(req, res) {
 
 });
 
-app.post('/api/projects/:projectId/wheres', function wheresCreate(req, res) {
+app.post('/api/projects/:projectId/organizers', function organizersCreate(req, res) {
   console.log('body', req.body);
   db.Project.findOne({_id: req.params.projectId}, function(err, project) {
     if (err) { console.log('error', err); }
 
-    var where = new db.Where(req.body);
-    project.wheres.push(where);
+    var organizer = new db.Organizer(req.body);
+    project.organizers.push(organizer);
     project.save(function(err, savedProject) {
       if (err) { console.log('error', err); }
-      console.log('project with new where saved:', savedProject);
-      res.json(where);
+      console.log('project with new organizer saved:', savedProject);
+      res.json(organizer);
     });
   });
 });

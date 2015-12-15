@@ -1,12 +1,10 @@
 Project 1 Idea
 
-Community service event app - Users can post/edit events
+Community service event app - Users can CRUD events
 
-Users can sign up and log in.
+**Users can sign up and log in.** (If time)
 
-Users can post their events to the app.
-
-Info to add: Event name, date, motivation
+Info to add: Event name, date, motivation, category
 
 
 
@@ -17,8 +15,6 @@ Sprint: Serve and render hard-coded data on the page, then connect to a database
 - User can see an image with title of website and background image
 - User can see a list of events with their respective info
 
-
-
 Sprint: Add a form and support creating data - done
 
 - User can see a form for adding events
@@ -26,9 +22,11 @@ Sprint: Add a form and support creating data - done
 - User can click on button to add form info to database
 - User can see an updated list of events
 
-Sprint: Add mongo embedded where data
+Sprint: Add mongo embedded organizer data - done
 
-- User can see 'where' for each project
+- User can see 'organizer' for each project
+
+--------------
 
 Sprint: Delete event
 
@@ -36,10 +34,19 @@ Sprint: Delete event
 - User can click on button to delete event
 - User can see updated page data
 
-Sprint: Edit and update customized event info
+Sprint: Update event info
 
 - User can see an edit button for each event
 - User can click on button to enable making changes to certain event input fields
 - User can type changes to event info
 - User can click on button to update event info
 - User can see updated page data
+
+Sprint: Update organizer info
+
+- User can see an edit button for each organizer
+- User can click on button to enable making changes to organizer input fields
+- User can type changes to organizer info
+- User can click on button to update organizer info
+- User can see updated page data
+- User 

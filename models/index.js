@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost/my-serveNow-db");
 var Project = require('./project');
-var Where = require('./where');
+var Organizer = require('./organizer');
 
 module.exports.Project = Project;
-module.exports.Where = Where;
+module.exports.Organizer = Organizer;
