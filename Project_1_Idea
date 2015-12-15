@@ -8,6 +8,11 @@ Info to add: Event name, date, motivation, category
 
 
 
+Possible Google maps integration for show
+Add contact details for organizer model
+
+
+
 Sprint: Set up development environment - done
 
 Sprint: Serve and render hard-coded data on the page, then connect to a database to show events index - done
@@ -26,20 +31,20 @@ Sprint: Add mongo embedded organizer data - done
 
 - User can see 'organizer' for each project
 
---------------
+Sprint: Delete project - done
 
-Sprint: Delete event
-
-- User can see a delete button for each event
-- User can click on button to delete event
+- User can see a delete button for each project
+- User can click on button to delete project
 - User can see updated page data
 
-Sprint: Update event info
+-----------------------
 
-- User can see an edit button for each event
-- User can click on button to enable making changes to certain event input fields
-- User can type changes to event info
-- User can click on button to update event info
+Sprint: Update project info
+
+- User can see an edit button for each project
+- User can click on button to enable making changes to certain project input fields
+- User can type changes to project info
+- User can click on button to update project info
 - User can see updated page data
 
 Sprint: Update organizer info

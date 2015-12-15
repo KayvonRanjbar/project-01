@@ -13,3 +13,7 @@
   vertical-align: baseline;
   margin-right: 12px;
 }
+
+.default-hidden {
+	display: none;
+}

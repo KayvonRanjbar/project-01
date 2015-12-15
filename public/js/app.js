@@ -26,7 +26,77 @@ $(document).ready(function() {
   });
 
   $('#saveOrganizer').on('click', handleNewOrganizerSubmit);
+
+  $('#projects').on('click', '.delete-project', handleDeleteProjectClick);
+
+  $('#projects').on('click', '.edit-project', handleEditProjectClick);
+
+  $('#projects').on('click', '.put-project', handleSaveChangesClick);
 });
+
+function getProjectRowById(id) {
+  return $('[data-project-id=' + id + ']');
+}
+
+function handleEditProjectClick(e) {
+  var projectId = $(this).parents('.project').data('project-id');
+  var $projectRow = getProjectRowById(projectId);
+
+  console.log('attempt to edit id', projectId);
+
+  // replace edit button with save button
+  $(this).parent().find('.btn').hide();
+  $(this).parent().find('.default-hidden').show();
+
+  // replace current spans with inputs
+  var what = $projectRow.find('span.project-what').text();
+  $projectRow.find('span.project-what').html('<input class="edit-project-what" value="' + what + '" required=""></input>');
+
+  var when = $projectRow.find('span.project-when').text();
+  $projectRow.find('span.project-when').html('<input class="edit-project-when" value="' + when + '" type="date" required=""></input>');
+
+  var where = $projectRow.find('span.project-where').text();
+  $projectRow.find('span.project-where').html('<input class="edit-project-where" value="' + where + '" required=""></input>');
+}
+
+function handleSaveChangesClick(e) {
+  var projectId = $(this).parents('.project').data('project-id');
+  var $projectRow = getProjectRowById(projectId);
+
+  var data = {
+    what: $projectRow.find('.edit-project-what').val(),
+    when: $projectRow.find('.edit-project-when').val(),
+    where: $projectRow.find('.edit-project-where').val()
+  };
+
+  $.ajax({
+    method: 'PUT',
+    url: '/api/projects/' + projectId,
+    data: data,
+    success: function(data) {
+      console.log(data);
+      $.get('/api/projects/' + projectId).success(function(project) {
+        //remove old entry
+        $projectRow.remove();
+        // render a replacement
+        renderProject(project);
+      });
+    }
+  });
+}
+
+function handleDeleteProjectClick(e) {
+  var projectId = $(this).parents('.project').data('project-id');
+  console.log('someone wants to delete project id=' + projectId );
+  $.ajax({
+    method: 'DELETE',
+    url: ('/api/projects/' + projectId),
+    success: function() {
+      console.log("Deleted!");
+      $('[data-project-id='+ projectId + ']').remove();
+    }
+  });
+}
 
 function handleNewOrganizerSubmit(e) {
   var projectId = $('#organizerModal').data('project-id');

@@ -83,6 +83,32 @@ app.get('/api/projects/:id', function projectShow(req, res) {
   });
 });
 
+app.delete('/api/projects/:id', function deleteProject(req, res) {
+  console.log('deleting id: ', req.params.id);
+  db.Project.remove({_id: req.params.id}, function(err) {
+    if (err) { return console.log(err); }
+    console.log("removal of id=" + req.params.id  + " successful.");
+    res.status(200).send(); // everything is OK
+  });
+});
+
+
+app.put('/api/projects/:id', function updateProject(req, res) {
+  console.log('updating id ', req.params.id);
+  console.log('received body ', req.body);
+
+  db.Project.findOne({_id: req.params.id}, function(err, foundProject) {
+    if (err) { console.log('error', err); }
+    foundProject.when = req.body.when;
+    foundProject.what = req.body.what;
+    foundProject.where = req.body.where;
+    foundProject.save(function(err, saved) {
+      if(err) { console.log('error', err); }
+      res.json(saved);
+    });
+  });
+});
+
 /**********
  * SERVER *
  **********/
