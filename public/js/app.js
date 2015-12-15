@@ -50,12 +50,18 @@ function handleUpdateOrganizer(e) {
   var organizerId = $(this).find('.delete-organizer').attr('data-organizer-id');
   var url = '/api/projects/' + projectId + '/organizers/' + organizerId;
   console.log('PUT ', url, firstName, lastName, email);
+
+  var $projectRow = getProjectRowById(projectId);
+
   $.ajax({
     method: 'PUT',
     url: url,
     data: { firstName: firstName, lastName: lastName, email: email },
     success: function (data) {
-      updateOrganizersList(projectId);
+      $.get('/api/projects/' + projectId).success(function(project) {
+        $projectRow.remove();
+        renderProject(project);
+      });
     }
   });
 }
@@ -113,19 +119,6 @@ function handleDeleteOrganizerClick(e) {
       $thisOrganizer.closest('form').remove();
       updateOrganizersList(projectId);
     }
-  });
-}
-
-// get the organizers again (now that one is gone) and then we'll fix the <li> on the package
-function updateOrganizersList(projectId) {
-  $.get('/api/projects/' + projectId + '/organizers').success(function(someProjects) {
-    console.log('replacement projects', someProjects);
-    // // build a new li
-    // var replacementLi = buildOrganizersHtml(someProjects);
-    // // now replace the <li> with the organizers on it.
-    // var $originalLi = $('[data-project-id=' + projectId + '] .organizers-list');
-    // $originalLi.replaceWith(replacementLi);
-    
   });
 }
 
