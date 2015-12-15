@@ -62,13 +62,14 @@ function handleUpdateOrganizer(e) {
         $projectRow.remove();
         renderProject(project);
       });
+
+      $('#organizerModal').modal('hide');
     }
   });
 }
 
 function handleEditOrganizersClick(e) {
   e.preventDefault();
-  console.log('where am I?');
   var projectId = $(this).parents('.project').data('project-id');
   // let's get the organizers for this project
   $.get('/api/projects/' + projectId + '/organizers').success(function(organizers) {
@@ -109,6 +110,7 @@ function handleDeleteOrganizerClick(e) {
   e.preventDefault();
   var organizerId = $(this).data('organizer-id');
   var projectId = $(this).closest('form').attr('id');
+  var $projectRow = getProjectRowById(projectId);
   var $thisOrganizer = $(this);
   var requestUrl = ('/api/projects/' + projectId + '/organizers/' + organizerId);
   console.log('DELETE ', requestUrl);
@@ -117,7 +119,13 @@ function handleDeleteOrganizerClick(e) {
     url: requestUrl,
     success: function(data) {
       $thisOrganizer.closest('form').remove();
-      updateOrganizersList(projectId);
+      $.get('/api/projects/' + projectId).success(function(project) {
+        $projectRow.remove();
+        renderProject(project);
+      });
+
+      // $('#organizerModal').modal('hide');
+      // updateOrganizersList(projectId);
     }
   });
 }
@@ -171,6 +179,7 @@ function handleSaveChangesClick(e) {
       });
     }
   });
+
 }
 
 function handleDeleteProjectClick(e) {
