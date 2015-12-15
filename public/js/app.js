@@ -38,6 +38,37 @@ $(document).ready(function() {
   $('#editOrganizersModal').on('submit', 'form', handleUpdateOrganizer);
 });
 
+function handleUpdateOrganizer(e) {
+  e.preventDefault();
+  // get the values from the item on the modal
+  var projectId = $(this).attr('id');
+  var firstName = $(this).find('.organizer-firstName').val();
+  var lastName = $(this).find('.organizer-lastName').val();
+  var email = $(this).find('.organizer-email').val();
+  var organizerId = $(this).find('.delete-organizer').attr('data-organizer-id');
+  var url = '/api/projects/' + projectId + '/organizers/' + organizerId;
+  console.log('PUT ', url, firstName, lastName, email);
+  $.ajax({
+    method: 'PUT',
+    url: url,
+    data: { firstName: firstName, lastName: lastName, email: email },
+    success: function (data) {
+      updateOrganizersList(projectId);
+    }
+  });
+}
+
+function handleEditOrganizersClick(e) {
+  e.preventDefault();
+  var projectId = $(this).parents('.project').data('project-id');
+  // let's get the organizers for this project
+  $.get('/api/projects/' + projectId + '/organizers').success(function(organizers) {
+    var formHtml = generateEditOrganizersModalHtml(organizers, projectId);
+    $('#editOrganizersModalBody').html(formHtml);
+    $('#editOrganizersModal').modal('show');
+  });
+}
+
 // takes an array of organizers and generates an EDIT form for them
 // we want to have both the projectId and organizerId available
 function generateEditOrganizersModalHtml(organizers, projectId) {
