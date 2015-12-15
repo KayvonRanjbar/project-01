@@ -5,9 +5,10 @@ var express = require('express');
 // generate a new express app and call it 'app'
 var app = express();
 var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
 // serve static files from public folder
 app.use(express.static(__dirname + '/public'));
-
+app.use(bodyParser.urlencoded({ extended: true }));
 
 /************
  * DATABASE *
@@ -47,6 +48,17 @@ app.get('/api/projects', function projectsIndex(req, res) {
   db.Project.find({}, function(err, projects) {
     res.json(projects);
   });
+});
+
+app.post('/api/projects', function projectCreate(req, res) {
+  console.log('body', req.body);
+
+  db.Project.create(req.body, function(err, project) {
+    if (err) { console.log('error', err); }
+    console.log(project);
+    res.json(project);
+  });
+
 });
 
 

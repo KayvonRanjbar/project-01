@@ -6,6 +6,17 @@ $(document).ready(function() {
       renderProject(project);
     });
   });
+
+  $('#project-form form').on('submit', function(e) {
+    e.preventDefault();
+    var formData = $(this).serialize();
+    console.log('formData', formData);
+    $.post('/api/projects', formData, function(project) {
+      console.log('project after POST', project);
+      renderProject(project);  //render the server's response
+    });
+    $(this).trigger("reset");
+  });
 });
 
 
