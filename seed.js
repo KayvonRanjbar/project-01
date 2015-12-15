@@ -36,7 +36,8 @@ projectsList.push({
 var sampleOrganizers = [];
 
 sampleOrganizers.push({ firstName: 'Bob',
-                   lastName: 'Anderson'
+                   lastName: 'Anderson',
+                   email: 'bp@gmail.com'
 });
 
 projectsList.forEach(function(project) {

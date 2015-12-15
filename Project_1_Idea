@@ -37,15 +37,15 @@ Sprint: Delete project - done
 - User can click on button to delete project
 - User can see updated page data
 
------------------------
-
-Sprint: Update project info
+Sprint: Update project info - done
 
 - User can see an edit button for each project
 - User can click on button to enable making changes to certain project input fields
 - User can type changes to project info
 - User can click on button to update project info
 - User can see updated page data
+
+-----------------------
 
 Sprint: Update organizer info
 
@@ -54,4 +54,3 @@ Sprint: Update organizer info
 - User can type changes to organizer info
 - User can click on button to update organizer info
 - User can see updated page data
-- User 

@@ -3,7 +3,8 @@ var Schema = mongoose.Schema;
 
 var OrganizerSchema = new Schema({
   firstName: String,
-  lastName: String
+  lastName: String,
+  email: String
 });
 
 var Organizer = mongoose.model('Organizer', OrganizerSchema);
