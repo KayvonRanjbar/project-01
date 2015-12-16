@@ -28,7 +28,7 @@ $(document).ready(function() {
 
   $('#projects').on('click', '.edit-project', handleEditProjectClick);
 
-  $('#projects').on('click', '.put-project', handleSaveChangesClick);
+  $('#projects').on('click', '.put-project', handleUpdateProject);
 
   $('#projects').on('click', '.edit-organizers', handleEditOrganizersClick);
 
@@ -51,12 +51,9 @@ function handleUpdateOrganizer(e) {
     method: 'PUT',
     url: url,
     data: { firstName: firstName, lastName: lastName, email: email },
-    success: function (data) {
-      console.log(data);
-      $.get('/api/projects/' + projectId).success(function(project) {
-        $projectRow.remove();
-        renderProject(project);
-      });
+    success: function (project) {
+      $projectRow.remove();
+      renderProject(project);
     }
   });
 }
@@ -109,13 +106,10 @@ function handleDeleteOrganizerClick(e) {
   $.ajax({
     method: 'DELETE',
     url: requestUrl,
-    success: function(data) {
-      console.log(data);
+    success: function(project) {
       $thisOrganizer.closest('form').remove();
-      $.get('/api/projects/' + projectId).success(function(project) {
-        $projectRow.remove();
-        renderProject(project);
-      });
+      $projectRow.remove();
+      renderProject(project);
     }
   });
 }
@@ -139,7 +133,7 @@ function handleEditProjectClick(e) {
   $projectRow.find('span.project-where').html('<input class="edit-project-where" value="' + where + '" required=""></input>');
 }
 
-function handleSaveChangesClick(e) {
+function handleUpdateProject(e) {
   var projectId = $(this).parents('.project').data('project-id');
   var $projectRow = getProjectRowById(projectId);
 
