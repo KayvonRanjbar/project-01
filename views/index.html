@@ -107,63 +107,63 @@
     <!-- handlebars template -->
         <script id="projectTemplate" type="text/x-handlebars-template">
 
-            <!-- one project -->
-            <div class="row project" data-project-id="{{ project._id }}">
+          <!-- one project -->
+          <div class="row project" data-project-id="{{ project._id }}">
 
-              <div class="col-md-10 col-md-offset-1">
-                <div class="panel panel-default">
-                  <div class="panel-body">
+            <div class="col-md-10 col-md-offset-1">
+              <div class="panel panel-default">
+                <div class="panel-body">
 
 
-                  <!-- begin project internal row -->
-                    <div class='row'>
-                      <div class="col-md-3 col-xs-12 thumbnail project-art">
-                        <img src="{{ project.image }}" alt="project image">
-                      </div>
-
-                      <div class="col-md-9 col-xs-12">
-                        <ul class="list-group">
-                          <li class="list-group-item">
-                            <h4 class='inline-header'>What:</h4>
-                            <span class='project-what'>{{ project.what }}</span>
-                          </li>
-
-                          <li class="list-group-item">
-                            <h4 class='inline-header'>When:</h4>
-                            <span class='project-when'>{{ project.when }}</span>
-                          </li>
-
-                          <li class="list-group-item">
-                            <h4 class='inline-header'>Where:</h4>
-                            <span class='project-where'>{{ project.where }}</span>
-                          </li>
-
-                          <li class="list-group-item">
-                            <h4 class='inline-header'>Organizer(s):</h4>
-                            {{#each project.organizers}}
-                              <span class='project-organizer'>{{ firstName }} {{ lastName }} &ndash; </span>
-                            {{/each}}
-                          </li>
-                          
-                        </ul>
-                      </div>
-
+                <!-- begin project internal row -->
+                  <div class='row'>
+                    <div class="col-md-3 col-xs-12 thumbnail project-art">
+                      <img src="{{ project.image }}" alt="project image">
                     </div>
-                    <!-- end of project internal row -->
 
-                    <div class='panel-footer'>
-                      <button class='btn btn-primary add-organizer'>Add Organizer</button>
-                      <button class='btn btn-info edit-project'>Edit Project</button>
-                      <button class='btn btn-info edit-organizers'>Edit Organizer(s)</button>
-                      <button class='btn btn-danger delete-project'>Delete Project</button>
-                      <button class='btn btn-success put-project default-hidden'>Save Changes</button>
+                    <div class="col-md-9 col-xs-12">
+                      <ul class="list-group">
+                        <li class="list-group-item">
+                          <h4 class='inline-header'>What:</h4>
+                          <span class='project-what'>{{ project.what }}</span>
+                        </li>
+
+                        <li class="list-group-item">
+                          <h4 class='inline-header'>When:</h4>
+                          <span class='project-when'>{{ project.when }}</span>
+                        </li>
+
+                        <li class="list-group-item">
+                          <h4 class='inline-header'>Where:</h4>
+                          <span class='project-where'>{{ project.where }}</span>
+                        </li>
+
+                        <li class="list-group-item">
+                          <h4 class='inline-header'>Organizer(s):</h4>
+                          {{#each project.organizers}}
+                            <span class='project-organizer'>{{ firstName }} {{ lastName }} &ndash; </span>
+                          {{/each}}
+                        </li>
+                        
+                      </ul>
                     </div>
 
                   </div>
+                  <!-- end of project internal row -->
+
+                  <div class='panel-footer'>
+                    <button class='btn btn-primary add-organizer'>Add Organizer</button>
+                    <button class='btn btn-info edit-project'>Edit Project</button>
+                    <button class='btn btn-info edit-organizers'>Edit Organizer(s)</button>
+                    <button class='btn btn-danger delete-project'>Delete Project</button>
+                    <button class='btn btn-success put-project default-hidden'>Save Changes</button>
+                  </div>
+
                 </div>
               </div>
             </div>
-            <!-- end one project -->
+          </div>
+          <!-- end one project -->
 
         </script>
 

@@ -10,9 +10,7 @@ $(document).ready(function() {
   $('#project-form form').on('submit', function(e) {
     e.preventDefault();
     var formData = $(this).serialize();
-    console.log('formData', formData);
     $.post('/api/projects', formData, function(project) {
-      console.log('project after POST', project);
       renderProject(project);  //render the server's response
     });
     $(this).trigger("reset");
@@ -20,7 +18,6 @@ $(document).ready(function() {
 
   $('#projects').on('click', '.add-organizer', function(e) {
     var id = $(this).parents('.project').data('project-id');
-    console.log('id',id);
     $('#organizerModal').data('project-id', id);
     $('#organizerModal').modal();
   });
@@ -49,21 +46,17 @@ function handleUpdateOrganizer(e) {
   var email = $(this).find('.organizer-email').val();
   var organizerId = $(this).find('.delete-organizer').attr('data-organizer-id');
   var url = '/api/projects/' + projectId + '/organizers/' + organizerId;
-  console.log('PUT ', url, firstName, lastName, email);
-
   var $projectRow = getProjectRowById(projectId);
-
   $.ajax({
     method: 'PUT',
     url: url,
     data: { firstName: firstName, lastName: lastName, email: email },
     success: function (data) {
+      console.log(data);
       $.get('/api/projects/' + projectId).success(function(project) {
         $projectRow.remove();
         renderProject(project);
       });
-
-      $('#organizerModal').modal('hide');
     }
   });
 }
@@ -98,7 +91,7 @@ function generateEditOrganizersModalHtml(organizers, projectId) {
             '    <button class="btn btn-danger delete-organizer" data-organizer-id="' + organizer._id + '">x</button>' +
             '  </div>'+
             '  <div class="form-group">' +
-            '    <button type="submit" class="btn btn-success save-organizer" data-organizer-id="' + organizer._id + '">save</span></button>' +
+            '    <button type="submit" class="btn btn-success save-organizer" data-organizer-id="' + organizer._id + '">save</button>' +
             '  </div>'+
             '</form>';
   });
@@ -113,32 +106,23 @@ function handleDeleteOrganizerClick(e) {
   var $projectRow = getProjectRowById(projectId);
   var $thisOrganizer = $(this);
   var requestUrl = ('/api/projects/' + projectId + '/organizers/' + organizerId);
-  console.log('DELETE ', requestUrl);
   $.ajax({
     method: 'DELETE',
     url: requestUrl,
     success: function(data) {
+      console.log(data);
       $thisOrganizer.closest('form').remove();
       $.get('/api/projects/' + projectId).success(function(project) {
         $projectRow.remove();
         renderProject(project);
       });
-
-      // $('#organizerModal').modal('hide');
-      // updateOrganizersList(projectId);
     }
   });
-}
-
-function getProjectRowById(id) {
-  return $('[data-project-id=' + id + ']');
 }
 
 function handleEditProjectClick(e) {
   var projectId = $(this).parents('.project').data('project-id');
   var $projectRow = getProjectRowById(projectId);
-
-  console.log('attempt to edit id', projectId);
 
   // replace edit button with save button
   $(this).parent().find('.btn').hide();
@@ -169,28 +153,23 @@ function handleSaveChangesClick(e) {
     method: 'PUT',
     url: '/api/projects/' + projectId,
     data: data,
-    success: function(data) {
+    success: function(project) {
       console.log(data);
-      $.get('/api/projects/' + projectId).success(function(project) {
-        //remove old entry
-        $projectRow.remove();
-        // render a replacement
-        renderProject(project);
-      });
+      //remove old entry
+      $projectRow.remove();
+      // render a replacement
+      renderProject(project);
     }
   });
-
 }
 
 function handleDeleteProjectClick(e) {
   var projectId = $(this).parents('.project').data('project-id');
-  console.log('someone wants to delete project id=' + projectId );
   $.ajax({
     method: 'DELETE',
     url: ('/api/projects/' + projectId),
     success: function() {
-      console.log("Deleted!");
-      $('[data-project-id='+ projectId + ']').remove();
+      getProjectRowById(projectId).remove();
     }
   });
 }
@@ -212,7 +191,6 @@ function handleNewOrganizerSubmit(e) {
 
   $.post(postUrl, formData)
     .success(function(organizer) {
-      console.log('organizer', organizer);
 
       // re-get full project and render on page
       $.get('/api/projects/' + projectId).success(function(project) {
@@ -243,15 +221,17 @@ function buildOrganizersHtml(organizers) {
   return organizersHtml;
 }
 
+function getProjectRowById(id) {
+  return $('[data-project-id=' + id + ']');
+}
+
 // this function takes a single project and renders it to the page
-function renderProject(taco) {
-  console.log('rendering project:', taco);
+function renderProject(project) {
   var template = $('#projectTemplate').html();
-  console.log('template', template);
 
   // compiledTemplate is actually a function!
   var compiledTemplate = Handlebars.compile(template);
-  var htmlFromCompiledTemplate = compiledTemplate( { project: taco } );
+  var htmlFromCompiledTemplate = compiledTemplate( { project: project } );
 
   $('#projects').prepend( htmlFromCompiledTemplate );
 
