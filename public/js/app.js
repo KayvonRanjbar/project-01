@@ -181,8 +181,6 @@ function handleNewOrganizerSubmit(e) {
   };
 
   var postUrl = '/api/projects/' + projectId + '/organizers';
-  console.log('posting to ', postUrl, ' with data ', formData);
-
   $.post(postUrl, formData)
     .success(function(organizer) {
 
