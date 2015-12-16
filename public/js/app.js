@@ -173,17 +173,14 @@ function handleNewOrganizerSubmit(e) {
   var firstName = $('#firstName').val();
   var lastName = $('#lastName').val();
   var email = $('#email').val();
-
   var formData = {
     firstName: firstName,
     lastName: lastName,
     email: email
   };
-
   var postUrl = '/api/projects/' + projectId + '/organizers';
   $.post(postUrl, formData)
     .success(function(organizer) {
-
       // re-get full project and render on page
       $.get('/api/projects/' + projectId).success(function(project) {
         //remove old entry
@@ -191,7 +188,6 @@ function handleNewOrganizerSubmit(e) {
         // render a replacement
         renderProject(project);
       });
-
       //clear form
       $('#firstName').val('');
       $('#lastName').val('');
