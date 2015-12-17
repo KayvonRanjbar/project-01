@@ -45,6 +45,7 @@ function handleUpdateOrganizer(e) {
   var firstName = $(this).find('.organizer-firstName').val();
   var lastName = $(this).find('.organizer-lastName').val();
   var email = $(this).find('.organizer-email').val();
+  
   var organizerId = $(this).find('.delete-organizer').attr('data-organizer-id');
   var url = '/api/projects/' + projectId + '/organizers/' + organizerId;
   var $projectRow = getProjectRowById(projectId);
