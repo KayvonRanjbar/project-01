@@ -29,3 +29,4 @@ serveNow is a single page full CRUD application for service projects. Allows you
 <img src="https://github.com/Kranjbar/project-01/blob/master/public/images/createProjectForm.png" width=500>
 
 <img src="https://github.com/Kranjbar/project-01/blob/master/public/images/createOrganizerModal.png" width=500>
+
