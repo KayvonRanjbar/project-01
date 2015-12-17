@@ -1,6 +1,7 @@
 
 $(document).ready(function() {
   console.log('app.js loaded!');
+  var autocomplete;
   $.get('/api/projects').success(function (projects) {
     projects.forEach(function(project) {
       renderProject(project);
@@ -211,8 +212,6 @@ function renderProject(project) {
   $('#projects').prepend( htmlFromCompiledTemplate );
 
 }
-
-var autocomplete;
 
 function initAutocomplete() {
   // Create the autocomplete object, restricting the search to geographical
