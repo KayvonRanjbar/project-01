@@ -14,7 +14,8 @@ serveNow is a single page full CRUD application for service projects. Allows you
 
 # Existing Features
 * User can navigate to HTML and JSON API endpoints
-* User can add a project (with input data validation)
+* User can see all projects and organizers
+* User can add projects (with Google Places API autocomplete search) and organizers (with input data validation)
 * User can update and delete projects and organizers
 
 # Planned features
@@ -26,3 +27,5 @@ serveNow is a single page full CRUD application for service projects. Allows you
 
 # Screenshots
 <img src="https://github.com/Kranjbar/project-01/blob/master/public/images/createProjectForm.png" width=500>
+
+<img src="https://github.com/Kranjbar/project-01/blob/master/public/images/createOrganizerModal.png" width=500>
