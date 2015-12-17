@@ -196,19 +196,6 @@ function handleNewOrganizerSubmit(e) {
     });
 }
 
-function buildOrganizersHtml(organizers) {
-  var organizerText = "    &ndash; ";
-  organizers.forEach(function(organizer) {
-    organizerText = organizerText + "(" + organizer.firstName + ") " + organizer.lastName + ") " + organizer.email + " &ndash; ";
-  });
-  var organizersHtml  =
-   "                      <li class='list-group-item organizers-list'>" +
-   "                        <h4 class='inline-header'>Organizers:</h4>" +
-   "                         <span>" + organizerText + "</span>" +
-   "                      </li>";
-  return organizersHtml;
-}
-
 function getProjectRowById(id) {
   return $('[data-project-id=' + id + ']');
 }
