@@ -1,5 +1,7 @@
 var mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost/my-serveNow-db");
+mongoose.connect( process.env.MONGOLAB_URI || 
+									process.env.MONGOHQ_URL || 
+									"mongodb://localhost/my-serveNow-db");
 var Project = require('./project');
 var Organizer = require('./organizer');
 
