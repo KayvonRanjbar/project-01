@@ -12,14 +12,15 @@ serveNow is a single page full CRUD application for service projects. Allows you
 * CSS
 
 # Existing Features
-* Has both HTML and JSON API endpoints
-* RESTful CRUD routes for endpoints
-* Data validation for HTML forms
-* Two models in a Mongo database including a one-to-many relationship between them
+* User can navigate to HTML and JSON API endpoints
+* User can add a project (with input data validation)
+* User can update and delete projects
+* 
 
 # Planned features
 * See a map with a marker for the project you're looking at!
+* Projects sorted by date
+* Past projects will be eliminated
 * User authentication with profiles for each user
 * Search for a project based on date and location
 
-# 
