@@ -226,8 +226,7 @@ function initAutocomplete() {
 function fillInAddress() {
   var place = autocomplete.getPlace();
   var address = place.formatted_address;
-  console.log(address);
-  $('#where').val(address);
+  $('#autocomplete').val(address);
 }
 
 function geolocate() {

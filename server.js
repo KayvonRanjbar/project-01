@@ -40,7 +40,8 @@ app.get('/api', function api_index (req, res){
     base_url: "https://evening-bastion-2552.herokuapp.com/",
     endpoints: [
       {method: "GET", path: "/api", description: "Describes available endpoints"},
-      {method: "GET", path: "/api/projects", description: "Index of all projects"}
+      {method: "GET", path: "/api/projects", description: "Index of all projects"},
+      
     ]
   });
 });
