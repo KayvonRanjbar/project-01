@@ -1,5 +1,5 @@
 # Description
-serveNow is a single page full CRUD application for service projects. Incorporates a Google Places search so you don't have to enter the entire address!
+serveNow is a single page full CRUD application for service projects. Allows you to add multiple organizers for each project. Incorporates a Google Places search so you don't have to enter the entire address!
 
 # Technologies Used
 * Mongoose
@@ -21,3 +21,5 @@ serveNow is a single page full CRUD application for service projects. Incorporat
 * See a map with a marker for the project you're looking at!
 * User authentication with profiles for each user
 * Search for a project based on date and location
+
+# 
