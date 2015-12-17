@@ -32,14 +32,13 @@ app.get('/', function homepage (req, res) {
  * JSON API Endpoints
  */
 
-app.get('/api/projects', function projectsIndex(req, res) {
+app.get('/api/projects', function projectIndex(req, res) {
   db.Project.find({}, function(err, projects) {
     res.json(projects);
   });
 });
 
 app.post('/api/projects', function projectCreate(req, res) {
-
   db.Project.create(req.body, function(err, project) {
     if (err) { console.log('error', err); }
     res.json(project);
@@ -57,7 +56,6 @@ app.get('/api/projects/:id/organizers', function projectShow(req, res) {
 app.post('/api/projects/:projectId/organizers', function organizersCreate(req, res) {
   db.Project.findOne({_id: req.params.projectId}, function(err, project) {
     if (err) { console.log('error', err); }
-
     var organizer = new db.Organizer(req.body);
     project.organizers.push(organizer);
     project.save(function(err, savedProject) {
