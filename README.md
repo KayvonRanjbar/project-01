@@ -24,7 +24,5 @@ serveNow is a single page full CRUD application for service projects. Allows you
 * User authentication with profiles for each user
 * Search for a project based on date and location
 
-#Screenshots
-![alt text](https://github.com/Kranjbar/project-01/tree/master/public/images/createProjectForm.png "Form")
-
-
+# Screenshots
+![alt text](https://github.com/Kranjbar/project-01/blob/master/public/images/createProjectForm.png "Form")
