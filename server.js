@@ -51,11 +51,9 @@ app.get('/api/projects', function projectsIndex(req, res) {
 });
 
 app.post('/api/projects', function projectCreate(req, res) {
-  console.log('body', req.body);
 
   db.Project.create(req.body, function(err, project) {
     if (err) { console.log('error', err); }
-    console.log(project);
     res.json(project);
   });
 
@@ -69,7 +67,6 @@ app.get('/api/projects/:id/organizers', function projectShow(req, res) {
 });
 
 app.post('/api/projects/:projectId/organizers', function organizersCreate(req, res) {
-  console.log('body', req.body);
   db.Project.findOne({_id: req.params.projectId}, function(err, project) {
     if (err) { console.log('error', err); }
 
@@ -77,31 +74,25 @@ app.post('/api/projects/:projectId/organizers', function organizersCreate(req, r
     project.organizers.push(organizer);
     project.save(function(err, savedProject) {
       if (err) { console.log('error', err); }
-      console.log('project with new organizer saved:', savedProject);
       res.json(organizer);
     });
   });
 });
 
 app.get('/api/projects/:id', function projectShow(req, res) {
-  console.log('requested project id=', req.params.id);
   db.Project.findOne({_id: req.params.id}, function(err, project) {
     res.json(project);
   });
 });
 
 app.delete('/api/projects/:id', function deleteProject(req, res) {
-  console.log('deleting id: ', req.params.id);
   db.Project.remove({_id: req.params.id}, function(err) {
     if (err) { return console.log(err); }
-    console.log("removal of id=" + req.params.id  + " successful.");
     res.status(200).send(); // everything is OK
   });
 });
 
 app.put('/api/projects/:id', function updateProject(req, res) {
-  console.log('updating id ', req.params.id);
-  console.log('received body ', req.body);
 
   db.Project.findOne({_id: req.params.id}, function(err, foundProject) {
     if (err) { console.log('error', err); }
@@ -136,7 +127,6 @@ app.put('/api/projects/:projectId/organizers/:id', function(req, res) {
 app.delete('/api/projects/:projectId/organizers/:id', function(req, res) {
   var projectId = req.params.projectId;
   var organizerId = req.params.id;
-  console.log(req.params);
   db.Project.findOne({_id: projectId}, function (err, foundProject) {
     if (err) {console.log(error, err);}
     // find organizer embedded in project
