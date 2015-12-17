@@ -28,23 +28,9 @@ app.get('/', function homepage (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
-
 /*
  * JSON API Endpoints
  */
-
-app.get('/api', function api_index (req, res){
-  res.json({
-    message: "Welcome to serveNow!",
-    documentation_url: "",
-    base_url: "https://evening-bastion-2552.herokuapp.com/",
-    endpoints: [
-      {method: "GET", path: "/api", description: "Describes available endpoints"},
-      {method: "GET", path: "/api/projects", description: "Index of all projects"},
-      
-    ]
-  });
-});
 
 app.get('/api/projects', function projectsIndex(req, res) {
   db.Project.find({}, function(err, projects) {
