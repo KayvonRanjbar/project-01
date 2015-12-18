@@ -1,9 +1,4 @@
-function initAutocomplete() {
-  // Create the autocomplete object, restricting the search to geographical
-  // location types.
-  autocomplete = new google.maps.places.Autocomplete((document.getElementById('autocomplete')), {types: ['geocode']});
+autocomplete = new google.maps.places.Autocomplete((document.getElementById('autocomplete')), {types: ['geocode']});
+autocomplete.addListener('place_changed', fillInAddress);
 
-  // When the user selects an address from the dropdown, populate the address
-  // field in the input.
-  autocomplete.addListener('place_changed', fillInAddress);
-}
+db.Project.find({}, null, {sort: {when: 1}}, function(err, projects) {res.json(projects);});
