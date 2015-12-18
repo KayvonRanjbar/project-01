@@ -12,7 +12,7 @@ $(document).ready(function() {
     e.preventDefault();
     var formData = $(this).serialize();
     $.post('/api/projects', formData, function(project) {
-      renderProject(project);  //render the server's response
+      renderProject(project);
     });
     $(this).trigger("reset");
   });
@@ -31,9 +31,9 @@ $(document).ready(function() {
 
   $('#projects').on('click', '.put-project', handleUpdateProject);
 
-  $('#projects').on('click', '.edit-organizers', handleEditOrganizersClick);
-
   $('#editOrganizersModal').on('click', '.delete-organizer', handleDeleteOrganizerClick);
+
+  $('#projects').on('click', '.edit-organizers', handleEditOrganizersClick);
 
   $('#editOrganizersModal').on('submit', 'form', handleUpdateOrganizer);
 });
