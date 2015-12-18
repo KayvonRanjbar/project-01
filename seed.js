@@ -4,13 +4,13 @@ var projectsList = [];
 
 projectsList.push({
              what: 'Help me landscape',
-             when: '2015-12-10',
+             when: '2015-12-29',
              where: '124 Bee Dr, Oakland, CA 32423, USA',
              image: '/images/tree.jpg'
            });
 projectsList.push({
              what: 'Feed the children',
-             when: '2015-12-29',
+             when: '2015-12-25',
              where: '7345 Apple Ct, Oakland, CA 34234, USA',
              image: '/images/children.jpeg'
            });
@@ -21,7 +21,7 @@ projectsList.push({
              image: '/images/elderly.jpg'
            });
 projectsList.push({
-             what: 'Cuddle the giraffes',
+             what: 'Walk the dogs',
              when: '2016-02-13',
              where: '23664 Mongo Way, Daly City, CA 34523, USA',
              image: '/images/animal.png'
