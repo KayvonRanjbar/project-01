@@ -63,7 +63,7 @@ function handleUpdateOrganizer(e) {
 function handleEditOrganizersClick(e) {
   e.preventDefault();
   var projectId = $(this).parents('.project').data('project-id');
-  // let's get the organizers for this project
+  // get the organizers for this project
   $.get('/api/projects/' + projectId + '/organizers').success(function(organizers) {
     var formHtml = generateEditOrganizersModalHtml(organizers, projectId);
     $('#editOrganizersModalBody').html(formHtml);
@@ -72,7 +72,6 @@ function handleEditOrganizersClick(e) {
 }
 
 // takes an array of organizers and generates an EDIT form for them
-// we want to have both the projectId and organizerId available
 function generateEditOrganizersModalHtml(organizers, projectId) {
   var html = '';
   organizers.forEach(function(organizer) {
@@ -206,7 +205,6 @@ function getProjectRowById(id) {
 function renderProject(project) {
   var template = $('#projectTemplate').html();
 
-  // compiledTemplate is actually a function!
   var compiledTemplate = Handlebars.compile(template);
   var htmlFromCompiledTemplate = compiledTemplate( { project: project } );
 
