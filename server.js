@@ -1,3 +1,18 @@
+/********************************
+
+  Great job!  I really don't have anything to add for this file.  To up your coding game, consider using the following code for err handling:
+
+  if (err) { return (console.log('error', err)); }
+
+  It looks strange, but this ensures that you will get a return value as well as a console display.
+
+  Overall great commenting, no unecessary console.logs, no unused or commented-out code.
+
+  Great work!  -jc
+
+
+********************************/
+
 // SERVER-SIDE JAVASCRIPT
 
 //require express in our app
