@@ -33,7 +33,7 @@ app.get('/', function homepage (req, res) {
  */
 
 app.get('/api/projects', function projectIndex(req, res) {
-  db.Project.find({}, function(err, projects) {
+  db.Project.find({}, null, {sort: {when: 1}}, function(err, projects) {
     res.json(projects);
   });
 });
@@ -43,7 +43,6 @@ app.post('/api/projects', function projectCreate(req, res) {
     if (err) { console.log('error', err); }
     res.json(project);
   });
-
 });
 
 app.get('/api/projects/:id/organizers', function projectShow(req, res) {
