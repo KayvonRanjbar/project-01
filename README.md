@@ -5,6 +5,7 @@ serveUp is a single page full CRUD application for service projects. Allows you 
 * Mongoose
 * Express
 * Node.js
+* MongoDB
 * jQuery
 * AJAX
 * JavaScript
@@ -19,9 +20,9 @@ serveUp is a single page full CRUD application for service projects. Allows you 
 * User can update and delete projects and organizers
 
 # Planned features
-* See a map with a marker for the project you're looking at
-* Past projects will be eliminated
 * User authentication with profiles for each user
+* See a map with a marker for the project you're looking at
+* Projects after the date will not be shown
 * Search for a project based on date and location
 
 # Screenshots
