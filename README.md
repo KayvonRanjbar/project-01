@@ -1,5 +1,5 @@
 # Description
-serveUp is a single page full CRUD application for service projects. Allows you to add multiple organizers for each project. Incorporates a Google Places API search so you don't have to enter the entire address!
+serveNow is a single page full CRUD application for service projects. Allows you to add multiple organizers for each project. Incorporates a Google Places API search so you don't have to enter the entire address!
 
 # Technologies Used
 * Mongoose
